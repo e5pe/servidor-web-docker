@@ -1,6 +1,6 @@
 # Descripción
 
-Este es un servidor web con la última versión de PHP y con apache.
+Este es un servidor web con la versión 7.4 de PHP, con mysql y phpmyadmin.
 
 ## Comandos
 
