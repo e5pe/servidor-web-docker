@@ -1,0 +1,32 @@
+version: "3.7"
+services:
+  web:
+    build:
+      context: "./php"
+      dockerfile: Dockerfile
+    container_name: php7_4
+    depends_on:
+      - db
+    volumes:
+      - ../../cursoPHPcodigofacilito/:/var/www/html/
+    ports:
+      - 8034:80
+  db:
+    container_name: mysql_latest
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_DATABASE: "${MYSQL_DB}"
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASS}"
+    ports:
+      - "3346:3306"
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:5.0.1
+    restart: always
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: "${MYSQL_ROOT_PASS}"
+    ports:
+      - "8099:80"
