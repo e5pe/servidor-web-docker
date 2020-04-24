@@ -6,6 +6,7 @@ services:
       dockerfile: Dockerfile
       args:
         PHP_APACHE_VERSION: 7.4-apache
+        NODE_VERSION_FOR_DOWNLOAD: setup_12.x
     container_name: php_apache
     depends_on:
       - db
